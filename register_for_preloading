@@ -3,6 +3,12 @@
 LIB="${1}/${2}"
 PRELOAD="/etc/ld.so.preload"
 
-if test -z $(/bin/grep ${LIB} ${PRELOAD} 2> /dev/null); then
-	echo ${LIB} >> ${PRELOAD}
+if [ "$3" = "in" ]; then
+	if test -z $(/bin/grep ${LIB} ${PRELOAD} 2> /dev/null); then
+		echo ${LIB} >> ${PRELOAD}
+	fi
+elif [ "$3" = "un" ]; then
+	sed -i "s|${LIB}||g" ${PRELOAD}
+else
+	echo "\"$3\" is not a valid argument!"
 fi

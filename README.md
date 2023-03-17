@@ -21,6 +21,13 @@ This will build a shared library that gets automatically loaded by the dynamic l
 (probably `ld`). To let `ld` know what to load, the script `register_for_preloading`
 will put the library's path into `/etc/ld.so.preload`.
 
+## Uninstall
+1) `cd build`
+2) `sudo make uninstall`
+
+This will delete the shared library from `/usr/local/lib64` and remove its path from
+`/etc/ld.so.preload`.
+
 ## Disclaimer
 You should be careful what you put into `ld.so.preload`. You can seriously mess up your
 system by automatically loading garbage. And while I haven't had any issued with this
