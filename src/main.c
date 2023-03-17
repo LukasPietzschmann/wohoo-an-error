@@ -66,7 +66,10 @@ static void* listener(void*) {
 }
 
 void init(void) {
-	if(!isatty(STDERR_FILENO))
+	const char* wohoo_env = secure_getenv("WOHOO");
+	bool wohoo_off = wohoo_env && !strncmp(wohoo_env, "FALSE", 5);
+
+	if(wohoo_off || !isatty(STDERR_FILENO))
 		return;
 
 	rand_seed = getpid();
