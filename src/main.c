@@ -52,11 +52,11 @@ static void* listener(void*) {
 	char read_character;
 	bool newline = true;
 
-	const char* reaction = random_element_from(reactions);
 	while(read(pipe_fds[0], &read_character, 1) != 0) {
 		if(read_character == '\n') {
 			newline = true;
 		} else if(newline && isprint(read_character)) {
+			const char* reaction = random_element_from(reactions);
 			newline = false;
 			write(old_stderr, reaction, strlen(reaction));
 		}
