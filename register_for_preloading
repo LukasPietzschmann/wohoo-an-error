@@ -1,0 +1,8 @@
+#!/bin/sh
+
+LIB="${1}/${2}"
+PRELOAD="/etc/ld.so.preload"
+
+if test -z $(/bin/grep ${LIB} ${PRELOAD} 2> /dev/null); then
+	echo ${LIB} >> ${PRELOAD}
+fi
