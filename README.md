@@ -30,6 +30,6 @@ This will delete the shared library from `/usr/local/lib64` and remove its path 
 
 ## Disclaimer
 You should be careful what you put into `ld.so.preload`. You can seriously mess up your
-system by automatically loading garbage. And while I haven't had any issued with this
+system by automatically loading garbage. And while I haven't had any issues with this
 little project, I cannot make any guarantee that this will be the case for your system,
 too.
